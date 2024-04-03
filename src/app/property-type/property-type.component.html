@@ -1,0 +1,10 @@
+<form [formGroup]="form">
+  <mat-form-field appearance="fill">
+    <mat-label>Property type</mat-label>
+    <mat-select formControlName="propertyCtrl">
+      @for (type of types; track type) {
+      <mat-option [value]="type.value">{{ type.label }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</form>

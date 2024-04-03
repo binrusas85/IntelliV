@@ -1,0 +1,46 @@
+<mat-stepper linear #stepper>
+    <mat-step label="Pick a location">
+        <app-location-picker></app-location-picker>
+        <br/>
+        <div>
+          <button mat-button color="primary" [disabled]="!isLocationPicked()" matStepperNext>Next</button>
+        </div>
+    </mat-step>
+    <mat-step label="Select a property type">
+        <app-property-type (type)="handleTypeSelection($event)"></app-property-type>
+        <div>
+          <button mat-button color="primary" matStepperPrevious>Back</button>
+          <button mat-button color="primary" [disabled]="!isTypeSelected" matStepperNext>Next</button>
+        </div>
+    </mat-step>
+    <mat-step label="Provide more details">
+        <app-property-details (valid)="handleDetailsEdit($event)"></app-property-details>
+        <div>
+          <button mat-button color="primary" matStepperPrevious>Back</button>
+          <button mat-flat-button color="primary" [disabled]="!isValidDetails" (click)="predict()">Submit</button>
+        </div>
+    </mat-step>
+    <mat-step label="Result">
+      <div class="result">
+        <span>Estimated Value is : </span><span class="price">500,000</span>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="grid-container">
+        <ul class="services">
+            <li *ngFor="let neighbour of neighbours | keyValue">
+                <mat-icon *ngIf="getIcon(neighbour.key) !== 'custom'; else customIcon" class="placeIcon">{{getIcon(neighbour.key)}}</mat-icon>            
+                <ng-template #customIcon>
+                    <mat-icon svgIcon="{{neighbour.key}}"></mat-icon>
+                </ng-template>
+                {{ neighbour.key | formatPlace }} {{ neighbour.value }}
+            </li>
+        </ul>
+      </div>
+      <br/>
+      <div>
+        <button mat-button color="primary" matStepperPrevious>Back</button>
+        <button mat-button color="primary" (click)="reset()">Reset</button>
+      </div>
+    </mat-step>
+</mat-stepper>
+

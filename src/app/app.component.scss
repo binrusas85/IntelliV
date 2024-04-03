@@ -1,0 +1,161 @@
+.toolbar {
+  height: 5%;
+  padding-left: 10px;
+  background: linear-gradient(
+    45deg,
+    rgba(103, 58, 183, 1) 0%,
+    rgba(103, 58, 183, 1) 35%,
+    rgba(205, 0, 255, 1) 100%
+  );
+}
+
+.brand {
+  display: inline-block; /* Display the box inline with the text flow */
+  color: white;
+  padding: 2px;
+}
+
+.logo {
+    display: inline-block; /* Makes the span behave like an inline element but able to have width and height */
+    width: 35px; /* Set the width of the span/background image */
+    height: 35px; /* Set the height of the span/background image */
+    background-size:cover; /* Cover the span area, can be adjusted to contain, 100%, etc. */
+    background-position: bottom; /* Center the background image */
+    background-image: url("../assets/images/map_2.png");
+    background-repeat: no-repeat; /* Prevent background image from repeating */
+    color: rgba(103, 58, 183, 1);
+    text-align:center;
+    -webkit-text-stroke: 1px rgba(103, 58, 183, 1);
+
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.container {
+  height: 94%;
+}
+
+.toolbar .container {
+  display: flex;
+  flex-flow: column wrap;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.sidenav {
+  user-select: none;
+  flex: 1;
+  overflow-x: hidden;
+}
+
+.sidenav a {
+  text-decoration: none;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover .mat-list-icon {
+  color: #673ab7;
+}
+
+a.visited {
+  border-left: 3px solid #673ab7;
+}
+
+a.unvisited {
+  border: none;
+  margin: 0;
+}
+
+.visited {
+  color: #673ab7;
+}
+
+.unvisited {
+  color: #b0b0b0;
+}
+
+.sidenav a .mat-list-icon {
+  font-size: 35px;
+}
+
+.material-icons-round {
+  font-size: 35px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.sidenav-content {
+  height: 100%;
+  justify-content: center;
+  padding: 10px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.menu-button {
+  transition: 300ms ease-in-out;
+  transform: rotate(0deg);
+}
+
+.menu-button.rotated {
+  transform: rotate(180deg);
+}
+
+.submenu {
+  overflow-y: hidden;
+  transition: transform 300ms ease;
+  transform: scaleY(0);
+  transform-origin: top;
+  padding-left: 30px;
+}
+
+.submenu.expanded {
+  transform: scaleY(1);
+}
+
+::ng-deep .mat-tooltip {
+  margin-left: 3px;
+}
+
+.btn {
+  cursor: pointer;
+  margin-right: 20px;
+  margin-left: 24px;
+}
+
+.icon-bar {
+  margin-bottom: 3px;
+  height: 4px;
+  width: 25px;
+  background: white;
+  transition: 0.5s;
+  border-radius: 50px;
+}
+
+.model {
+  color: white;
+  font-size: larger;
+}
+
+.background {
+  background-image: url("../assets/images/skyline_crop.png"); 
+  background-size: auto; /* Cover the entire container */
+  background-position: bottom; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent background image from repeating */
+  /* Optionally, you can set additional styles like height and width */
+  // height: 100vh; /* Set the height to fill the viewport */
+  // width: 100%; /* Set the width to fill the container */
+}
+
+
+

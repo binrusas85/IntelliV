@@ -1,0 +1,41 @@
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+.result {
+    padding-bottom: 15px;
+}
+
+.grid-container ul {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Creates a 3-column grid */
+    // grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+    list-style-type: none; /* Removes bullet points */
+}
+  
+.grid-container li {
+    // background-color: #f0f0f0; /* Example styling */
+    // padding: 10px; /* Adds some padding inside each grid item */
+    // border: 1px solid #ccc; /* Adds a border around each grid item */
+    text-align:left; /* Center-aligns the text */
+}
+
+.price {
+    color:rgba(103, 58, 183, 1);
+    font-weight: bold;
+    font-size: larger;
+}
+
+.services {
+    list-style-type: none;
+    padding-inline-start: 0px;
+}
+
+.placeIcon {
+    vertical-align: sub;
+}
+

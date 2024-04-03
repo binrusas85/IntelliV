@@ -1,0 +1,22 @@
+<form [formGroup]="landForm" class="form-container">
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Street Width (m)</mat-label>
+        <input matInput type="number" formControlName="streetWidth" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Area (m²)</mat-label>
+      <input matInput type="number" formControlName="area" required>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Length (m)</mat-label>
+      <input matInput type="number" formControlName="length" required>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Width (m)</mat-label>
+      <input matInput type="number" formControlName="width" required>
+    </mat-form-field>
+</form>
+  
