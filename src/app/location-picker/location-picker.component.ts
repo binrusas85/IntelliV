@@ -15,6 +15,7 @@ import { SourceTextModule } from 'vm';
 })
 export class LocationPickerComponent implements OnInit { 
   searchQuery: string = ''; // Bind this to your search input
+  current_marker: google.maps.Marker | undefined;
   marker: google.maps.Marker | undefined;
   map: google.maps.Map | undefined ;
   picked_location : any | undefined
@@ -47,7 +48,7 @@ export class LocationPickerComponent implements OnInit {
               if (map_element) {
                 this.map = new google.maps.Map(map_element, {
                   center: userLocation,
-                  zoom: 15,
+                  zoom: 16,
                   mapTypeId: 'roadmap',
                   disableDefaultUI: false,
                   draggable: true,
@@ -59,6 +60,18 @@ export class LocationPickerComponent implements OnInit {
                   gestureHandling: 'auto',
                   minZoom: 0,
                   maxZoom: 21,
+                });
+
+                // Create a marker for the current location
+                this.current_marker = new google.maps.Marker({
+                  position: userLocation,
+                  map: this.map,
+                  title: 'Your Location',
+                  icon: {
+                    url: '../../assets/images/current_location.png', // Path to your icon image
+                    // Optional: specify size, origin, or anchor if necessary
+                    scaledSize: new google.maps.Size(30, 30), // Scales the icon size
+                  }
                 });
 
                 // Listen for click events on the map

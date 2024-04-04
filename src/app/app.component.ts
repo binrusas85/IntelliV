@@ -9,13 +9,12 @@ import { MatButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatMenuModule } from '@angular/material/menu';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, RouterLink, MatSidenavModule, MatToolbarModule, MatIconModule, 
-    MatListModule, MatButton, MatTooltip, MatMenuModule, CommonModule, HttpClientModule],
+    MatListModule, MatButton, MatTooltip, MatMenuModule, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   animations: [
