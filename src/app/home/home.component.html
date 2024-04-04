@@ -30,6 +30,7 @@
             <li *ngFor="let neighbour of neighbours | keyValue">
                 <mat-icon *ngIf="getIcon(neighbour.key) !== 'custom'; else customIcon" class="placeIcon">{{getIcon(neighbour.key)}}</mat-icon>            
                 <ng-template #customIcon>
+                    <span></span>
                     <mat-icon svgIcon="{{neighbour.key}}"></mat-icon>
                 </ng-template>
                 {{ neighbour.key | formatPlace }} {{ neighbour.value }}

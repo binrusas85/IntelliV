@@ -10,7 +10,7 @@ export class NeighbourhoodService {
   // constructor(private http: HttpClient) {}
 
   getNeighbours(){
-    let neighbours: Neighbours = {'establishment': 3, 'bank': 1, 'atm': 1, 'electronics_store': 1, 'restaurant': 1, 'hospital': 1, 'grocery_or_supermarket': 1, 'place_of_worship': 3, 'park': 1, 'school': 2, 'tourist_attraction': 1, 'mosque': 1, 'store': 2, 'clothing_store': 1}
+    let neighbours: Neighbours = {'hospital': 3, 'pharmacy': 4, 'supermarket': 8, 'school': 16, 'shopping_mall': 11, 'mosque': 3, 'bank': 1, 'bakery': 10, 'park': 3, 'restaurant': 20, 'cafe': 18, 'gym': 3, 'lodging': 11, 'laundry': 7}
     return neighbours ;
   }
 
