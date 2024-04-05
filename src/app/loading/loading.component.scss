@@ -24,3 +24,35 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+
+.steam {
+    position: relative;
+    width: 3px;
+    height: 100px;
+    background-color: #fff;
+    opacity: 0.6;
+    animation: rise 3s infinite;
+    z-index: 2; /* Lower z-index */
+}
+  
+@keyframes rise {
+    0% {
+      transform: translateY(0);
+      opacity: 0.6;
+    }
+    100% {
+      transform: translateY(-100px);
+      opacity: 0;
+    }
+}
+
+.coffee {
+    width: 400px;
+    height: 600px;
+    position: relative;
+    z-index: 1; /* Lower z-index */
+    // top:20%;
+    // left: 10%;
+}
+  

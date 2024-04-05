@@ -79,8 +79,10 @@ export class HomeComponent {
     let lng:number = location.lng ;
 
     this.neighbour.fetchData(lat, lng).subscribe({
-      next: (data: Neighbours) => {
+      next: async (data: Neighbours) => {
         this.neighbours = data;
+        // await this.sleep(200000); // Sleep for 2000 milliseconds (2 seconds)
+
         this.price = 500000 ;
         this.isLoading = false ;
       },
@@ -94,4 +96,8 @@ export class HomeComponent {
   getIcon(key:string){
     return this.iconService.getIconByKey(key);
   }
+
+  sleep(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 }
