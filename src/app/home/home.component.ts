@@ -12,13 +12,14 @@ import { KeyValuePipe } from '../key-value.pipe';
 import {MatIconModule} from '@angular/material/icon';
 import { IconService } from '../icon.service';
 import { FormatPlacePipe } from '../format-place.pipe';
+import { LoadingComponent } from '../loading/loading.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [LocationPickerComponent, PropertyTypeComponent, PropertyDetailsComponent, 
-    MatStepperModule, MatButtonModule, CommonModule, KeyValuePipe, MatDividerModule, 
-  MatIconModule, FormatPlacePipe],
+  imports: [LocationPickerComponent, PropertyTypeComponent, PropertyDetailsComponent
+    , MatStepperModule, MatButtonModule, CommonModule, KeyValuePipe, MatDividerModule
+    , MatIconModule, FormatPlacePipe, LoadingComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -30,8 +31,13 @@ export class HomeComponent {
 
   isTypeSelected:boolean = false ;
   isValidDetails:boolean = false ;
+  
+  isLoading:boolean = false ;
+
+  price : number = 0; 
 
   neighbours:Neighbours = {};
+
 
   constructor(private neighbour: NeighbourhoodService , private iconService: IconService) {}
 
@@ -60,14 +66,14 @@ export class HomeComponent {
       this.locationPicker.resetMap();
       this.propertyType.form.reset();
       this.propertyDetails.landForm.reset();
-      this.stepper!.reset();
+      this.stepper.reset();
     } catch(err){
       console.error('Failed to reset due to error : ' + err);
     }
   }
 
   predict(){
-    // this.neighbours = this.neighbour.getNeighbours();
+    this.isLoading = true ;
     let location : any = this.locationPicker.picked_location ;
     let lat:number = location.lat ;
     let lng:number = location.lng ;
@@ -75,19 +81,13 @@ export class HomeComponent {
     this.neighbour.fetchData(lat, lng).subscribe({
       next: (data: Neighbours) => {
         this.neighbours = data;
+        this.price = 500000 ;
+        this.isLoading = false ;
       },
       error: (error) => {
         console.error('There was an error!', error);
       },
     });
-
-
-
-
-
-
-
-
     this.stepper.next();
   }
 

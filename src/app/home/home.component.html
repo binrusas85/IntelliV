@@ -22,7 +22,7 @@
     </mat-step>
     <mat-step label="Result">
       <div class="result">
-        <span>Estimated Value is : </span><span class="price">500,000</span>
+        <span>Estimated Value is : </span><span class="price">{{ price | number:'1.2-2' }}</span>
       </div>
       <mat-divider></mat-divider>
       <div class="grid-container">
@@ -37,6 +37,7 @@
             </li>
         </ul>
       </div>
+      <app-loading *ngIf="isLoading"></app-loading>
       <br/>
       <div>
         <button mat-button color="primary" matStepperPrevious>Back</button>
