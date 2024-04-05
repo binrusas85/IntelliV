@@ -14,7 +14,6 @@ import { SourceTextModule } from 'vm';
   styleUrl: './location-picker.component.scss',
 })
 export class LocationPickerComponent implements OnInit { 
-  searchQuery: string = ''; // Bind this to your search input
   current_marker: google.maps.Marker | undefined;
   marker: google.maps.Marker | undefined;
   map: google.maps.Map | undefined ;

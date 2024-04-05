@@ -29,6 +29,7 @@ export class IconService {
     bus_station: 'directions_bus',
     cafe: 'local_cafe',
     school: 'school',
+    university: 'school',
     gym: 'fitness_center',
     hospital: 'local_hospital',
     laundry: 'local_laundry_service',

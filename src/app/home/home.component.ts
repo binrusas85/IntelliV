@@ -67,7 +67,27 @@ export class HomeComponent {
   }
 
   predict(){
-    this.neighbours = this.neighbour.getNeighbours();
+    // this.neighbours = this.neighbour.getNeighbours();
+    let location : any = this.locationPicker.picked_location ;
+    let lat:number = location.lat ;
+    let lng:number = location.lng ;
+
+    this.neighbour.fetchData(lat, lng).subscribe({
+      next: (data: Neighbours) => {
+        this.neighbours = data;
+      },
+      error: (error) => {
+        console.error('There was an error!', error);
+      },
+    });
+
+
+
+
+
+
+
+
     this.stepper.next();
   }
 
