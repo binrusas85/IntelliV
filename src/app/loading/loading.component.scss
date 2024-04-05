@@ -11,31 +11,6 @@
     z-index: 1000; /* Ensure it's above other content */
 }
 
-.loader {
-    border: 16px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 16px solid #3498db;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-
-.steam {
-    position: relative;
-    width: 3px;
-    height: 100px;
-    background-color: #fff;
-    opacity: 0.6;
-    animation: rise 3s infinite;
-    z-index: 2; /* Lower z-index */
-}
-  
 @keyframes rise {
     0% {
       transform: translateY(0);
@@ -47,6 +22,16 @@
     }
 }
 
+.steams {
+    position: absolute;
+    z-index: 2; /* Lower z-index */
+    height: 160px;
+    top: 100px;
+    left: 575px;
+    opacity: 0.5;
+    animation: rise 3s infinite;
+}
+
 .coffee {
     width: 400px;
     height: 600px;
@@ -55,4 +40,11 @@
     // top:20%;
     // left: 10%;
 }
+
+
+
+
+
+
+
   
