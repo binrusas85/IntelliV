@@ -63,6 +63,7 @@ export class HomeComponent {
 
   reset(){
     try{
+      this.neighbours = {};
       this.locationPicker.resetMap();
       this.propertyType.form.reset();
       this.propertyDetails.landForm.reset();
@@ -81,7 +82,7 @@ export class HomeComponent {
     this.neighbour.fetchData(lat, lng).subscribe({
       next: async (data: Neighbours) => {
         this.neighbours = data;
-        // await this.sleep(2000000); // Sleep for 2000 milliseconds (2 seconds)
+        await this.sleep(1000); // Sleep for 2000 milliseconds (2 seconds)
 
         this.price = 500000 ;
         this.isLoading = false ;

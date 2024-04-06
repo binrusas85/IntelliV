@@ -21,11 +21,11 @@
         </div>
     </mat-step>
     <mat-step label="Result">
-      <div class="result">
-        <span>Estimated Value is : </span><span class="price">{{ price | number:'1.2-2' }}</span>
+      <div *ngIf="!isLoading" class="result">
+        <span class="price-label">Estimated Value is </span><span class="price">SAR {{ price | number:'1.2-2' }}</span>
       </div>
-      <mat-divider></mat-divider>
-      <div class="grid-container">
+      <!-- <mat-divider *ngIf="!isLoading"></mat-divider>
+      <div class="grid-container" *ngIf="!isLoading">
         <ul class="services">
             <li *ngFor="let neighbour of neighbours | keyValue">
                 <mat-icon *ngIf="getIcon(neighbour.key) !== 'custom'; else customIcon" class="placeIcon">{{getIcon(neighbour.key)}}</mat-icon>            
@@ -36,7 +36,27 @@
                 {{ neighbour.key | formatPlace }} {{ neighbour.value }}
             </li>
         </ul>
-      </div>
+      </div> -->
+
+      <fieldset class="mat-form-fieldset" *ngIf="!isLoading">
+        <legend class="mat-form-legend">Nearby Services</legend>
+        <div class="grid-container">
+          <ul class="services">
+              <li *ngFor="let neighbour of neighbours | keyValue">
+                  <mat-icon *ngIf="getIcon(neighbour.key) !== 'custom'; else customIcon" class="placeIcon">{{getIcon(neighbour.key)}}</mat-icon>            
+                  <ng-template #customIcon>
+                      <span></span>
+                      <mat-icon svgIcon="{{neighbour.key}}"></mat-icon>
+                  </ng-template>
+                  {{ neighbour.key | formatPlace }} {{ neighbour.value }}
+              </li>
+          </ul>
+        </div>
+        
+      </fieldset>
+
+
+
       <app-loading *ngIf="isLoading"></app-loading>
       <br/>
       <div>

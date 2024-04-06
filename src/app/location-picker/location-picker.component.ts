@@ -104,7 +104,7 @@ export class LocationPickerComponent implements OnInit {
         }
       });
     } else {
-      console.error('isPlatformBrowser(this.platformId) is false, ' + this.platformId);
+      // console.error('isPlatformBrowser(this.platformId) is false, ' + this.platformId);
     }
   }
 
