@@ -24,6 +24,7 @@
   color: rgba(103, 58, 183, 1);
   font-weight: bold;
   font-size: large;
+  margin-top: 10px;
 }
 
 .services {
@@ -48,4 +49,11 @@
 
 .price-label {
     font-weight: bold;
+}
+
+.skeleton-loader-theme { 
+  width: 170px ;
+  border-radius: 0 ;
+  height: 20px ;
+  vertical-align: -webkit-baseline-middle
 }

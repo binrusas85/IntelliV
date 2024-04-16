@@ -13,13 +13,14 @@ import {MatIconModule} from '@angular/material/icon';
 import { IconService } from '../icon.service';
 import { FormatPlacePipe } from '../format-place.pipe';
 import { LoadingComponent } from '../loading/loading.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [LocationPickerComponent, PropertyTypeComponent, PropertyDetailsComponent
     , MatStepperModule, MatButtonModule, CommonModule, KeyValuePipe, MatDividerModule
-    , MatIconModule, FormatPlacePipe, LoadingComponent],
+    , MatIconModule, FormatPlacePipe, LoadingComponent, NgxSkeletonLoaderModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

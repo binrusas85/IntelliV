@@ -21,24 +21,21 @@
         </div>
     </mat-step>
     <mat-step label="Result">
-      <div *ngIf="!isLoading" class="result">
+      <!-- <div *ngIf="!isLoading" class="result">
         <span class="price-label">Estimated Value is </span><span class="price">SAR {{ price | number:'1.2-2' }}</span>
-      </div>
-      <!-- <mat-divider *ngIf="!isLoading"></mat-divider>
-      <div class="grid-container" *ngIf="!isLoading">
-        <ul class="services">
-            <li *ngFor="let neighbour of neighbours | keyValue">
-                <mat-icon *ngIf="getIcon(neighbour.key) !== 'custom'; else customIcon" class="placeIcon">{{getIcon(neighbour.key)}}</mat-icon>            
-                <ng-template #customIcon>
-                    <span></span>
-                    <mat-icon svgIcon="{{neighbour.key}}"></mat-icon>
-                </ng-template>
-                {{ neighbour.key | formatPlace }} {{ neighbour.value }}
-            </li>
-        </ul>
       </div> -->
 
-      <fieldset class="mat-form-fieldset" *ngIf="!isLoading">
+      <fieldset class="mat-form-fieldset">
+        <legend class="mat-form-legend">Estimated Value</legend>
+        <div class="grid-container">
+          <ngx-skeleton-loader *ngIf="isLoading" [theme]="{ 'width': '100%', 'height': '30px', 'vertical-align': '-webkit-baseline-middle'}">
+          </ngx-skeleton-loader>
+          <p *ngIf="!isLoading" class="price">SAR {{ price | number:'1.2-2' }}</p>
+        </div>
+      </fieldset>
+
+
+      <!-- <fieldset class="mat-form-fieldset" *ngIf="!isLoading">
         <legend class="mat-form-legend">Nearby Services</legend>
         <div class="grid-container">
           <ul class="services">
@@ -52,12 +49,28 @@
               </li>
           </ul>
         </div>
-        
+      </fieldset> -->
+
+      <br/>  
+      <fieldset class="mat-form-fieldset">
+        <legend class="mat-form-legend">Nearby Services</legend>
+        <div class="grid-container">
+          <ngx-skeleton-loader *ngIf="isLoading" [theme]="{ 'width': '100%', 'height': '160px', 'vertical-align': '-webkit-baseline-middle'}">
+          </ngx-skeleton-loader>
+          <ul *ngIf="!isLoading" class="services">
+              <li *ngFor="let neighbour of neighbours | keyValue">
+                  <mat-icon *ngIf="getIcon(neighbour.key) !== 'custom'; else customIcon" class="placeIcon">{{getIcon(neighbour.key)}}</mat-icon>            
+                  <ng-template #customIcon>
+                      <span></span>
+                      <mat-icon svgIcon="{{neighbour.key}}"></mat-icon>
+                  </ng-template>
+                  {{ neighbour.key | formatPlace }} {{ neighbour.value }}
+              </li>
+          </ul>
+        </div>
       </fieldset>
 
-
-
-      <app-loading *ngIf="isLoading"></app-loading>
+      <!-- <app-loading *ngIf="isLoading"></app-loading> -->
       <br/>
       <div>
         <button mat-button color="primary" matStepperPrevious>Back</button>
