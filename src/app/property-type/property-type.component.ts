@@ -15,14 +15,33 @@ import { CommonModule } from '@angular/common';
   styleUrl: './property-type.component.scss'
 })
 export class PropertyTypeComponent implements OnInit {
-  @Output() type = new EventEmitter<string>();
+  @Output() type = new EventEmitter<number>();
   form! : FormGroup; 
   
-  types: { value: string, label: string }[] = [
-    { value: 'land', label: 'Land' },
-    { value: 'building', label: 'Building' },
-    { value: 'house', label: 'House' },
-    { value: 'apartment', label: 'Apartment' },
+  types: { value: number, label: string }[] = [
+    {value: 1, label: "Apartment, rental"},
+    {value: 2, label: "Land, sell"},
+    {value: 3, label: "Villa, sell"},
+    {value: 4, label: "Floor, rental"},
+    {value: 5, label: "Villa, rental"},
+    {value: 6, label: "Apartment, sell"},
+    {value: 7, label: "Building, sell"},
+    {value: 8, label: "Store, rental"},
+    {value: 9, label: "House, sell"},
+    {value: 10, label: "Esterahah, sell"},
+    {value: 11, label: "House, rental"},
+    {value: 12, label: "Farm, sell"},
+    {value: 13, label: "Esterahah, rental"},
+    {value: 14, label: "Office, rental"},
+    {value: 15, label: "Land, rental"},
+    {value: 16, label: "Building, rental"},
+    {value: 17, label: "Warehouse, rental"},
+    {value: 18, label: "Campsite, rental"},
+    {value: 19, label: "Room, rental"},
+    {value: 20, label: "Store, sell"},
+    {value: 21, label: "Furnished apartment"},
+    {value: 22, label: "Floor, sell"},
+    {value: 23, label: "Chalet, rental"}
   ];
 
   ngOnInit(){

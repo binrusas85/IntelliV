@@ -32,13 +32,12 @@ export class HomeComponent {
 
   isTypeSelected:boolean = false ;
   isValidDetails:boolean = false ;
-  
   isLoading:boolean = false ;
 
   price : number = 0; 
-
   neighbours:Neighbours = {};
 
+  propertyTypeValue: number = 2
 
   constructor(private neighbour: NeighbourhoodService , private iconService: IconService) {}
 
@@ -50,8 +49,10 @@ export class HomeComponent {
     }
   }
 
-  handleTypeSelection(value:string){
+  handleTypeSelection(value:number){
     if(value){
+      this.propertyTypeValue = value
+      console.log(`Propery type value : ${this.propertyTypeValue}`)
       this.isTypeSelected = true ;
     } else {
       this.isTypeSelected = false ;
@@ -101,5 +102,5 @@ export class HomeComponent {
 
   sleep(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
-}
+  }
 }

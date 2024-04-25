@@ -14,17 +14,13 @@
         </div>
     </mat-step>
     <mat-step label="Provide more details">
-        <app-property-details (valid)="handleDetailsEdit($event)"></app-property-details>
+        <app-property-details [propertyTypeValue]="propertyTypeValue" (valid)="handleDetailsEdit($event)"></app-property-details>
         <div>
           <button mat-button color="primary" matStepperPrevious>Back</button>
           <button mat-flat-button color="primary" [disabled]="!isValidDetails" (click)="predict()">Submit</button>
         </div>
     </mat-step>
     <mat-step label="Result">
-      <!-- <div *ngIf="!isLoading" class="result">
-        <span class="price-label">Estimated Value is </span><span class="price">SAR {{ price | number:'1.2-2' }}</span>
-      </div> -->
-
       <fieldset class="mat-form-fieldset">
         <legend class="mat-form-legend">Estimated Value</legend>
         <div class="grid-container">
@@ -33,23 +29,6 @@
           <p *ngIf="!isLoading" class="price">SAR {{ price | number:'1.2-2' }}</p>
         </div>
       </fieldset>
-
-
-      <!-- <fieldset class="mat-form-fieldset" *ngIf="!isLoading">
-        <legend class="mat-form-legend">Nearby Services</legend>
-        <div class="grid-container">
-          <ul class="services">
-              <li *ngFor="let neighbour of neighbours | keyValue">
-                  <mat-icon *ngIf="getIcon(neighbour.key) !== 'custom'; else customIcon" class="placeIcon">{{getIcon(neighbour.key)}}</mat-icon>            
-                  <ng-template #customIcon>
-                      <span></span>
-                      <mat-icon svgIcon="{{neighbour.key}}"></mat-icon>
-                  </ng-template>
-                  {{ neighbour.key | formatPlace }} {{ neighbour.value }}
-              </li>
-          </ul>
-        </div>
-      </fieldset> -->
 
       <br/>  
       <fieldset class="mat-form-fieldset">
@@ -69,12 +48,11 @@
           </ul>
         </div>
       </fieldset>
-
-      <!-- <app-loading *ngIf="isLoading"></app-loading> -->
+      <app-loading *ngIf="isLoading"></app-loading>
       <br/>
       <div>
-        <button mat-button color="primary" matStepperPrevious>Back</button>
-        <button mat-button color="primary" (click)="reset()">Reset</button>
+        <button mat-button [disabled]="isLoading" color="primary" matStepperPrevious>Back</button>
+        <button mat-button [disabled]="isLoading" color="primary" (click)="reset()">Reset</button>
       </div>
     </mat-step>
 </mat-stepper>
