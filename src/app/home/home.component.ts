@@ -1,5 +1,5 @@
 import { Neighbours } from '../utils/neighbours';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { LocationPickerComponent } from '../location-picker/location-picker.component';
 import { PropertyTypeComponent } from '../property-type/property-type.component';
 import { PropertyDetailsComponent } from '../property-details/property-details.component';
@@ -30,6 +30,7 @@ export class HomeComponent {
   @ViewChild(PropertyDetailsComponent) propertyDetails!: PropertyDetailsComponent;
   @ViewChild('stepper') stepper!: MatStepper;
 
+  isLocationPicked:boolean = false ;
   isTypeSelected:boolean = false ;
   isValidDetails:boolean = false ;
   isLoading:boolean = false ;
@@ -39,14 +40,14 @@ export class HomeComponent {
 
   propertyTypeValue: number = 2
 
-  constructor(private neighbour: NeighbourhoodService , private iconService: IconService) {}
+  constructor(private neighbour: NeighbourhoodService , private iconService: IconService, 
+    private cd: ChangeDetectorRef) {}
 
-  isLocationPicked(): boolean{
-    if(this.locationPicker?.picked_location){
-      return true ;
-    } else {
-      return false ;
-    }
+  handleLocationPick(value:boolean){
+    console.log(`Location is picked = ${value}`)
+    this.isLocationPicked = value ;
+    this.cd.detectChanges();  // Manually trigger change detection
+    console.log(`this.isLocationPicked = ${this.isLocationPicked}`)
   }
 
   handleTypeSelection(value:number){
@@ -68,18 +69,65 @@ export class HomeComponent {
       this.neighbours = {};
       this.locationPicker.resetMap();
       this.propertyType.form.reset();
-      this.propertyDetails.landForm.reset();
+      this.propertyDetails.propertyForm.reset();
       this.stepper.reset();
     } catch(err){
       console.error('Failed to reset due to error : ' + err);
     }
   }
 
-  predict(){
+
+  predict_old(){
     this.isLoading = true ;
     let location : any = this.locationPicker.picked_location ;
     let lat:number = location.lat ;
     let lng:number = location.lng ;
+
+    this.neighbour.fetchData(lat, lng).subscribe({
+      next: async (data: Neighbours) => {
+        this.neighbours = data;
+        await this.sleep(1000); // Sleep for 2000 milliseconds (2 seconds)
+
+        this.price = 500000 ;
+        this.isLoading = false ;
+      },
+      error: (error) => {
+        console.error('There was an error!', error);
+      },
+    });
+    this.stepper.next();
+  }
+
+
+  predict(){
+    this.isLoading = true ;
+      // description: string,
+      // category: number, 
+      // beds: number,
+      // livings: number,
+      // wc: number, 
+      // area: number, 
+      // street_width: number,
+      // ketchen: number,
+      // ac: number,
+      // furnished: number,
+      // lat: number, 
+      // lng: number, 
+      // city_id: number,
+      // district_id: number,
+      // width: number, 
+      // length: number, 
+      // daily_rentable: number
+
+
+
+
+
+    let location : any = this.locationPicker.picked_location ;
+    let lat:number = location.lat ;
+    let lng:number = location.lng ;
+
+    let category
 
     this.neighbour.fetchData(lat, lng).subscribe({
       next: async (data: Neighbours) => {

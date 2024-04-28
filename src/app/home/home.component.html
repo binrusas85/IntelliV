@@ -1,9 +1,9 @@
 <mat-stepper linear #stepper>
     <mat-step label="Pick a location">
-        <app-location-picker></app-location-picker>
+        <app-location-picker (isPicked)="handleLocationPick($event)"></app-location-picker>
         <br/>
         <div>
-          <button mat-button color="primary" [disabled]="!isLocationPicked()" matStepperNext>Next</button>
+          <button mat-button color="primary" [disabled]="!isLocationPicked" matStepperNext>Next</button>
         </div>
     </mat-step>
     <mat-step label="Select a property type">

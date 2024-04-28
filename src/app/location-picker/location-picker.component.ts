@@ -14,6 +14,8 @@ import { SourceTextModule } from 'vm';
   styleUrl: './location-picker.component.scss',
 })
 export class LocationPickerComponent implements OnInit { 
+  @Output() isPicked = new EventEmitter<boolean>();
+
   current_marker: google.maps.Marker | undefined;
   marker: google.maps.Marker | undefined;
   map: google.maps.Map | undefined ;
@@ -87,8 +89,9 @@ export class LocationPickerComponent implements OnInit {
                     map: this.map,
                   });
 
-                  // console.log(`Clicked location: Lat: ${this.picked_location!.lat}, Lng: ${this.picked_location!.lng}`);
+                  console.log(`Clicked location: Lat: ${this.picked_location!.lat}, Lng: ${this.picked_location!.lng}`);
                   // You can now use clickedLocation.lat and clickedLocation.lng as needed
+                  this.isPicked.emit(true);
                 });    
   
               } else {

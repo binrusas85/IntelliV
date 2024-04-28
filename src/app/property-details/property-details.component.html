@@ -1,66 +1,43 @@
-<form *ngIf="propertyTypeValue == 2" [formGroup]="landForm" class="form-container">
-  <mat-form-field appearance="fill" class="form-field">
+<form [formGroup]="propertyForm" class="form-container">
+
+  <mat-form-field *ngIf="visibilityStates.streetWidth" appearance="fill" class="form-field">
     <mat-label>Street Width (m)</mat-label>
     <input matInput type="number" formControlName="streetWidth" required>
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="form-field">
+  <mat-form-field *ngIf="visibilityStates.area" appearance="fill" class="form-field">
     <mat-label>Area (m²)</mat-label>
     <input matInput type="number" formControlName="area" required>
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="form-field">
+  <mat-form-field *ngIf="visibilityStates.length" appearance="fill" class="form-field">
     <mat-label>Length (m)</mat-label>
     <input matInput type="number" formControlName="length" required>
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="form-field">
-    <mat-label>Width (m)</mat-label>
-    <input matInput type="number" formControlName="width" required>
-  </mat-form-field>
-</form>
-
-<form *ngIf="propertyTypeValue == 9" [formGroup]="houseForm" class="form-container">
-  <mat-form-field appearance="fill" class="form-field">
-    <mat-label>Street Width (m)</mat-label>
-    <input matInput type="number" formControlName="streetWidth" required>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill" class="form-field">
-    <mat-label>Area (m²)</mat-label>
-    <input matInput type="number" formControlName="area" required>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill" class="form-field">
-    <mat-label>Length (m)</mat-label>
-    <input matInput type="number" formControlName="length" required>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill" class="form-field">
+  <mat-form-field *ngIf="visibilityStates.width" appearance="fill" class="form-field">
     <mat-label>Width (m)</mat-label>
     <input matInput type="number" formControlName="width" required>
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="form-field">
+  <mat-form-field *ngIf="visibilityStates.beds" appearance="fill" class="form-field">
     <mat-label>Beds</mat-label>
     <input matInput type="number" formControlName="beds" required>
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="form-field">
+  <mat-form-field *ngIf="visibilityStates.livings" appearance="fill" class="form-field">
     <mat-label>Living Rooms</mat-label>
     <input matInput type="number" formControlName="livings" required>
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="form-field">
+  <mat-form-field *ngIf="visibilityStates.wc" appearance="fill" class="form-field">
     <mat-label>WC</mat-label>
     <input matInput type="number" formControlName="wc" required>
   </mat-form-field>
 
   <div class="toggle-container">
-    <mat-slide-toggle color="primary" formControlName="kitchen">Kitchen</mat-slide-toggle>
-    <mat-slide-toggle color="primary" formControlName="ac">AC</mat-slide-toggle>
-    <mat-slide-toggle color="primary" formControlName="furnished">Furnished</mat-slide-toggle>
-    <mat-slide-toggle color="primary" formControlName="daily_rentable">Daily Rentable</mat-slide-toggle>  
+    <mat-slide-toggle *ngIf="visibilityStates.kitchen" color="primary" formControlName="kitchen">Kitchen</mat-slide-toggle>
+    <mat-slide-toggle *ngIf="visibilityStates.ac" color="primary" formControlName="ac">AC</mat-slide-toggle>
+    <mat-slide-toggle *ngIf="visibilityStates.furnished" color="primary" formControlName="furnished">Furnished</mat-slide-toggle>
+    <mat-slide-toggle *ngIf="visibilityStates.daily_rentable" color="primary" formControlName="daily_rentable">Daily Rentable</mat-slide-toggle>  
   </div>
-
-</form>
