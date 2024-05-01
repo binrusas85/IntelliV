@@ -30,7 +30,7 @@ export class LocationPickerComponent implements OnInit {
     console.log('load map ....' + this.platformId);
     if (isPlatformBrowser(this.platformId)) {
       let loader = new Loader({
-        apiKey: 'AIzaSyBkGwKVdxpDu9-aW-hbxvn6HxZX4N6CgcY',
+        apiKey: 'AIzaSyBD3Thu0gYWkPfqsnbXR6980adhzwuNNr4',
         libraries: ["places"], // Ensure the places library is loaded
       });
 

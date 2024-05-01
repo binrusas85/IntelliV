@@ -35,6 +35,15 @@
     <input matInput type="number" formControlName="wc" required>
   </mat-form-field>
 
+  <mat-form-field *ngIf="visibilityStates.rent_period" appearance="fill">
+    <mat-label>Rent Period</mat-label>
+    <mat-select formControlName="rent_period">
+      @for (type of rent_periods; track type) {
+      <mat-option [value]="type.value">{{ type.label }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
   <div class="toggle-container">
     <mat-slide-toggle *ngIf="visibilityStates.kitchen" color="primary" formControlName="kitchen">Kitchen</mat-slide-toggle>
     <mat-slide-toggle *ngIf="visibilityStates.ac" color="primary" formControlName="ac">AC</mat-slide-toggle>

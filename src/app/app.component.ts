@@ -1,5 +1,5 @@
 import { RouterOutlet, RouterLink } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -9,6 +9,7 @@ import { MatButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatMenuModule } from '@angular/material/menu';
 import { CommonModule } from '@angular/common';
+import { Model, ModelService } from './shared/model.service';
 
 @Component({
   selector: 'app-root',
@@ -64,7 +65,8 @@ export class AppComponent {
 
   models: { name: string, label: string }[] = [
     { name: 'ml', label: 'ML-0.2.1' },
-    { name: 'dl', label: 'DL-0.31' },
+    { name: 'dl', label: 'DL-0.3.1' },
+    { name: 'nlp', label: 'NLP-0.0.3' },
   ];
 
   selected_model:any = this.models[0];
@@ -77,6 +79,11 @@ export class AppComponent {
   settingsIcon = "material-icons-round unvisited";
   aboutIcon = "material-icons-round unvisited";
 
+  constructor(private modelService: ModelService) {}
+
+  ngAfterViewInit(){
+    this.setModelSelection(this.selected_model);
+  }
 
   onClick(event?:any) {
     let id; 
@@ -124,6 +131,12 @@ export class AppComponent {
   }
 
   onModelSelection(model:any): void {
+    this.setModelSelection(model);
+  }
+
+  setModelSelection(model:any): void {
+    console.log(`setModelSelection : ${JSON.stringify(model)}`);
     this.selected_model = model ;
+    this.modelService.setSelectedModel(model);
   }
 }

@@ -1,24 +1,8 @@
-// .form-container {
-//   display: flex;
-//   flex-direction: column;
-//   width: 15%;
-// }
-
-// .form-field {
-//   margin-bottom: 1rem;
-// }
-
-// mat-slide-toggle {
-//   margin: 8px 0;
-//   display: block;
-// }
-
-
 .form-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Auto-fill columns of at least 250px wide
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); // Auto-fill columns of at least 250px wide
   grid-template-rows: auto auto auto auto; // Define rows explicitly if needed
-  grid-column-gap: 50px;
+  grid-column-gap: 30px;
   align-items: start;
   margin-top: 15px;
 
