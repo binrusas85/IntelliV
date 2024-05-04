@@ -67,6 +67,7 @@ export class AppComponent {
     { name: 'ml', label: 'ML-0.2.1' },
     { name: 'dl', label: 'DL-0.3.1' },
     { name: 'nlp', label: 'NLP-0.0.3' },
+    { name: 'hpr', label: 'Hyper-0.1.1' },
   ];
 
   selected_model:any = this.models[0];
